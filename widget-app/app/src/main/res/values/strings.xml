@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">录音小部件</string>
+    <string name="widget_title">录音机</string>
+    <string name="widget_status_idle">点击红点开始</string>
+    <string name="widget_status_recording">正在录音…点击停止</string>
+    <string name="notif_channel">录音服务</string>
+    <string name="notif_recording_title">正在录音</string>
+    <string name="notif_recording_text">点击通知可停止录音</string>
+    <string name="perm_rationale">需要麦克风权限才能录音，请允许。</string>
+    <string name="toast_saved">录音已保存：%1$s</string>
+    <string name="toast_perm_denied">未授予麦克风权限，无法录音</string>
+    <string name="toast_error">录音启动失败，请重试</string>
+    <string name="main_title">录音小部件</string>
+    <string name="main_desc">已安装。在桌面长按空白处 → 小部件 → 找到「录音机」拖到桌面即可。\n\n点红点开始录音，再点停止，文件自动保存到「音乐/录音小部件」文件夹。</string>
+    <string name="main_perm_button">授予麦克风权限</string>
+</resources>

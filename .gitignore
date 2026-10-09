@@ -51,3 +51,9 @@ out/
 *.apk
 *.aab
 *.keystore
+
+# widget app build artifacts
+/widget-app/.gradle/
+/widget-app/build/
+/widget-app/app/build/
+/widget-app/local.properties
