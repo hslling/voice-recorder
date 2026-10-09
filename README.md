@@ -12,7 +12,7 @@
   - 动态压缩让音量更平稳
   - 增益放大整体音量
 - **实时频谱**：录音时显示动态频谱条。
-- **录音列表**：本地播放、下载（webm/m4a）、删除。
+- **录音列表**：本地播放、下载、删除。
 - **移动优先**：单栏布局，适配手机竖屏。
 
 ## 本地开发
@@ -32,14 +32,33 @@ PORT=43123 npm run dev
 其它脚本：
 
 ```bash
-npm run build   # 生产构建
-npm run start    # 运行生产构建
+npm run build   # 静态导出到 ./out
+npm run start    # 运行生产构建（非静态）
 npm run lint     # 代码检查
 ```
 
+## 部署到 Cloudflare Pages
+
+本项目已配置为静态导出（`output: "export"`），构建产物在 `./out`。
+
+1. 注册 [Cloudflare](https://cloudflare.com)（免费）。
+2. 进入 **Workers & Pages → Create application → Pages → Connect to Git**。
+3. 授权并选择 GitHub 仓库 `hslling/voice-recorder`，分支 `main`。
+4. 构建设置：
+   - **Framework preset**: Next.js (Static HTML Export)
+   - **Build command**: `npm run build`
+   - **Build output directory**: `out`
+   - **Node version**: 22（环境变量加 `NODE_VERSION=22`）
+5. 点 **Save and Deploy**，几十秒后拿到 `*.pages.dev` 链接。
+6. 如果 `*.pages.dev` 国内打不开，到 **Custom domains** 绑定你自己的域名（解析到 Cloudflare），可达性会明显提升。
+
+## 部署到 Vercel（备选）
+
+也支持，但默认 `*.vercel.app` 域名在国内多无法访问，需绑定自定义域名。
+
 ## 技术栈
 
-- Next.js 15（App Router）+ TypeScript
+- Next.js 15（App Router，静态导出）+ TypeScript
 - Tailwind CSS v4
 - shadcn/ui（base-ui）
 - Web Audio API + MediaRecorder API
