@@ -41,3 +41,13 @@ yarn-error.log*
 next-env.d.ts
 out/
 .next/
+
+# android build artifacts
+/android/.gradle/
+/android/build/
+/android/app/build/
+/android/captures/
+/android/local.properties
+*.apk
+*.aab
+*.keystore

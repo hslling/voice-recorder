@@ -56,6 +56,24 @@ npm run lint     # 代码检查
 
 也支持，但默认 `*.vercel.app` 域名在国内多无法访问，需绑定自定义域名。
 
+## 打包成安卓 App（APK）
+
+项目已配置 Capacitor，可打包成安卓安装包，离线运行、无需网络和域名，适合直接发给别人安装。
+
+前置：JDK 21 + Android SDK（platform-tools、platforms;android-34、build-tools;34.0.0），设置 `ANDROID_HOME`。
+
+```bash
+npm install
+npm run build                 # 静态导出到 ./out
+npx cap sync android           # 同步到安卓工程
+cd android && ./gradlew assembleDebug
+# 产物：android/app/build/outputs/apk/debug/app-debug.apk
+```
+
+已声明 `RECORD_AUDIO` / `MODIFY_AUDIO_SETTINGS` 权限，Capacitor WebView 会在录音时自动请求并授予麦克风权限。
+
+> 当前 debug 签名的 APK 可直接安装（需开启「允许安装未知来源应用」）。如需发布到应用商店，需自行生成正式签名 keystore 并用 `assembleRelease`。
+
 ## 技术栈
 
 - Next.js 15（App Router，静态导出）+ TypeScript
